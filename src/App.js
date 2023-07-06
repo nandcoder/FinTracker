@@ -33,7 +33,6 @@ function App() {
           <Route path="/signup" component={Signup} />
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="/reset-password" component={ResetPassword} />
-          <Route path="/team" component={Team} />
         </Switch>
       </div>
       <Footer />
