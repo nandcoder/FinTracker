@@ -10,7 +10,6 @@ import Home from "./pages/Home"
 import Community from "./pages/Community";
 import User from "./pages/User";
 import Transaction from "./pages/Transaction";
-import Team from "./pages/Team";
 import GroupTransaction from "./pages/Transaction/GroupTransaction";
 import UserTransaction from "./pages/Transaction/UserTransaction";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
