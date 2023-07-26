@@ -2,41 +2,18 @@ import Table from 'react-bootstrap/Table';
 // import Badge from 'react-bootstrap/Badge';
 // import data from '../assets/TransactionData';
 // import { db } from '../utils/firebase';
-import { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from './Authentication/AuthProvider';
 import { DataContext } from './Authentication/DataProvider';
 import { Avatar, AvatarGroup, Badge, Box, IconButton, useToast } from '@chakra-ui/react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 import { db } from '../utils/firebase';
+// import RazorpayButton from './RazorpayButton';
 // import Loader from './Loader';
 // import getUserById from '../assets/queries';
 
-// function descendingComparator(a, b, orderBy) {
-//     if (b[orderBy] < a[orderBy]) {
-//         return -1;
-//     }
-//     if (b[orderBy] > a[orderBy]) {
-//         return 1;
-//     }
-//     return 0;
-// }
-// function getComparator(order, orderBy) {
-//     return order === 'desc'
-//         ? (a, b) => descendingComparator(a, b, orderBy)
-//         : (a, b) => -descendingComparator(a, b, orderBy);
-// }
-// function stableSort(array, comparator) {
-//     const stabilizedThis = array.map((el, index) => [el, index]);
-//     stabilizedThis.sort((a, b) => {
-//         const order = comparator(a[0], b[0]);
-//         if (order !== 0) {
-//             return order;
-//         }
-//         return a[1] - b[1];
-//     });
-//     return stabilizedThis.map((el) => el[0]);
-// }
+
 function TransactionTable(props) {
     const { id, group } = props;
     const { user } = useContext(AuthContext);
@@ -243,6 +220,9 @@ function TransactionTable(props) {
                                 />
 
                             )}
+                            {/* {transaction.data.status === 'pending' && transaction.data.paidBy !== user.uid && (
+                            <RazorpayButton amount={transaction.data.amount} payee={users[transaction.data.paidBy].name} />
+                            )} */}
                         </td>
                     </tr>
                 )

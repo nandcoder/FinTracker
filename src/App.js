@@ -10,7 +10,6 @@ import Home from "./pages/Home"
 import Community from "./pages/Community";
 import User from "./pages/User";
 import Transaction from "./pages/Transaction";
-import Team from "./pages/Team";
 import GroupTransaction from "./pages/Transaction/GroupTransaction";
 import UserTransaction from "./pages/Transaction/UserTransaction";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -33,7 +32,6 @@ function App() {
           <Route path="/signup" component={Signup} />
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="/reset-password" component={ResetPassword} />
-          <Route path="/team" component={Team} />
         </Switch>
       </div>
       <Footer />
