@@ -34,23 +34,32 @@ const AddGroup = (props) => {
             .where("email", "==", currEmail)
             .get()
             .then((data) => {
-
                 if (data.size === 0) {
                     setError('involved', { type: 'custom', message: 'Account not found' });
+                } else {
+                    data.forEach((doc) => {
+                        // doc.data() is never undefined for query doc snapshots
+                        console.log(doc.id, " => ", doc.data());
+                        // Check if user already exists in mails array before adding
+                        const userData = doc.data();
+                        const isUserExist = mails.some(mail => mail.userId === userData.userId);
+                        
+                        if (!isUserExist) {
+                            setMails(prevMails => [...prevMails, userData]);
+                        } else {
+                            setError('involved', { type: 'custom', message: 'User already added' });
+                        }
+                    });
+                    // Clear the email input when user is found
+                    setCurrEmail('');
                 }
-                data.forEach((doc) => {
-                    // doc.data() is never undefined for query doc snapshots
-                    console.log(doc.id, " => ", doc.data());
-                    setMails(prevMails => [...prevMails, doc.data()])
-                });
-
             })
             .catch((error) => {
                 console.log("Error getting documents: ", error);
             })
             .finally(() => {
-                console.log("mails", mails)
-            })
+                console.log("Group members", mails);
+            });
     }
 
 
